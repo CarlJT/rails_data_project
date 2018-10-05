@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_022904) do
+ActiveRecord::Schema.define(version: 2018_10_05_023126) do
 
   create_table "media", force: :cascade do |t|
     t.integer "id_anilist"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 2018_10_05_022904) do
     t.boolean "is_adult"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "media_pictures", force: :cascade do |t|
+    t.string "size"
+    t.string "description"
+    t.string "link"
+    t.integer "medium_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["medium_id"], name: "index_media_pictures_on_medium_id"
   end
 
   create_table "media_titles", force: :cascade do |t|
