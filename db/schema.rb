@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_023126) do
+ActiveRecord::Schema.define(version: 2018_10_05_191300) do
+
+  create_table "episodes", force: :cascade do |t|
+    t.string "title"
+    t.string "thumbnail"
+    t.string "url"
+    t.string "site"
+    t.integer "medium_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["medium_id"], name: "index_episodes_on_medium_id"
+  end
 
   create_table "media", force: :cascade do |t|
     t.integer "id_anilist"
