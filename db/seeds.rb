@@ -7,13 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Destroy items in existing tables
-MediaPicture.destroy_all
-MediaTitle.destroy_all
 Medium.destroy_all
 
 # Define URL, headers and query for AniList API
-require 'httparty'
-
 url = 'https://graphql.anilist.co'
 
 headers = {
@@ -96,7 +92,7 @@ years.each do |year|
             }
 
             body = {
-                :query => query
+                :query => query,
                 :variables => variables
             }
 
@@ -105,7 +101,7 @@ years.each do |year|
             page_data = response.parsed_response["data"]["Page"]["pageInfo"]
 
             media_data.each do |i|
-                Medium m = Medium.create(id_anilist: i["id"], 
+                m = Medium.create(id_anilist: i["id"], 
                     id_mal: i["idMal"], 
                     media_type: i["type"], 
                     format: i["format"],
@@ -138,6 +134,13 @@ years.each do |year|
                 m.media_pictures.create(size: "medium", description: "cover_image", link: i["coverImage"]["medium"])
                 m.media_pictures.create(description: "banner_image", link: i["bannerImage"])
             end
+
+            has_next_page = page_data["hasNextPage"]
+
+            if has_next_page
+                page += 1
+            end
+        end
     end
 end
 
