@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_020319) do
+ActiveRecord::Schema.define(version: 2018_10_05_022244) do
 
   create_table "media", force: :cascade do |t|
     t.integer "id_anilist"
     t.integer "id_mal"
     t.string "media_type"
-    t.string "media_format"
-    t.string "media_status"
-    t.text "media_description"
+    t.string "format"
+    t.string "status"
+    t.text "description"
     t.string "start_date"
     t.string "end_date"
     t.string "season"
@@ -30,27 +30,10 @@ ActiveRecord::Schema.define(version: 2018_10_05_020319) do
     t.boolean "is_licensed"
     t.string "source"
     t.string "hashtag"
-    t.string "trailer"
-    t.datetime "updated_at", null: false
+    t.integer "updated_at_anilist"
     t.integer "average_score"
     t.integer "mean_score"
     t.boolean "is_adult"
-    t.datetime "created_at", null: false
-  end
-
-  create_table "media_pictures", force: :cascade do |t|
-    t.integer "media_id"
-    t.string "size"
-    t.string "description"
-    t.string "link"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "media_titles", force: :cascade do |t|
-    t.integer "id_media"
-    t.string "code"
-    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
