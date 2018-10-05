@@ -150,6 +150,26 @@ years.each do |year|
                         m.episodes.create(title: e['title'], thumbnail: e['thumbnail'], url: e['url'], site: e['site'])
                     end
                 end
+
+                # Pull tags, create if it doesn't exist yet in the database
+                unless i['tags'].length < 1
+                    tags = i['tags']
+
+                    tags.each do |t|
+                        tag_from_db_count = Tag.where(:name => t['name']).count
+
+                        # If tag is nil, create one in the database
+                        if tag_from_db_count == 0
+                            tag_from_db  = Tag.create(name: t['name'], category: t['category'])
+                            MediaTag.create(medium: m, tag: tag_from_db)
+                        else
+                            tag = Tag.where(:name => t['name']).first
+                            MediaTag.create(medium: m, tag: tag)
+                        end
+                        # Create relation between media and tag
+                        
+                    end
+                end
             end
 
             has_next_page = page_data["hasNextPage"]
@@ -160,5 +180,3 @@ years.each do |year|
         end
     end
 end
-
-puts "There are #{Medium.count} media in the database, with #{MediaTitle.count} titles and #{MediaPicture.count} pictures"
