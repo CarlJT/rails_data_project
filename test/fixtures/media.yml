@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_anilist: 1
+  id_mal: 1
+  media_type: MyString
+  format: MyString
+  status: MyString
+  description: MyText
+  start_date: MyString
+  end_date: MyString
+  season: MyString
+  episodes: 1
+  duration: 1
+  chapters: 1
+  volumes: 1
+  country_of_origin: MyString
+  is_licensed: false
+  source: MyString
+  hashtag: MyString
+  updated_at_anilist: 1
+  average_score: 1
+  mean_score: 1
+  is_adult: false
+
+two:
+  id_anilist: 1
+  id_mal: 1
+  media_type: MyString
+  format: MyString
+  status: MyString
+  description: MyText
+  start_date: MyString
+  end_date: MyString
+  season: MyString
+  episodes: 1
+  duration: 1
+  chapters: 1
+  volumes: 1
+  country_of_origin: MyString
+  is_licensed: false
+  source: MyString
+  hashtag: MyString
+  updated_at_anilist: 1
+  average_score: 1
+  mean_score: 1
+  is_adult: false
