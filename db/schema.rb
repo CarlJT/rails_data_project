@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_192204) do
+ActiveRecord::Schema.define(version: 2018_10_05_192357) do
 
   create_table "episodes", force: :cascade do |t|
     t.string "title"
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 2018_10_05_192204) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["medium_id"], name: "index_media_pictures_on_medium_id"
+  end
+
+  create_table "media_tags", force: :cascade do |t|
+    t.integer "medium_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["medium_id"], name: "index_media_tags_on_medium_id"
+    t.index ["tag_id"], name: "index_media_tags_on_tag_id"
   end
 
   create_table "media_titles", force: :cascade do |t|
