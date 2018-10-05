@@ -68,6 +68,16 @@ query = "
                 averageScore
                 meanScore
                 isAdult
+                streamingEpisodes{
+                    title
+                    thumbnail
+                    url
+                    site
+                }
+                tags{
+                    name
+                    category
+                }
             }
         }
     }
@@ -110,7 +120,7 @@ years.each do |year|
                     start_date: "#{i["startDate"]["year"]}-#{i["startDate"]["month"]}-#{i["startDate"]["day"]}",
                     end_date: "#{i["endDate"]["year"]}-#{i["endDate"]["month"]}-#{i["endDate"]["day"]}",
                     season: i["season"],
-                    episodes: i["episodes"],
+                    episode_count: i["episodes"],
                     duration: i["duration"],
                     chapters: i["chapters"],
                     volumes: i["volumes"],
@@ -123,7 +133,6 @@ years.each do |year|
                     mean_score: i["meanScore"],
                     is_adult: i["isAdult"])
 
-                Create record for each available title (if not null)
                 m.media_titles.create(code: "romaji", title: i["title"]["native"])
                 m.media_titles.create(code: "romaji", title: i["title"]["romaji"])
                 m.media_titles.create(code: "english", title: i["title"]["english"])
