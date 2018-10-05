@@ -8,6 +8,7 @@
 
 # Destroy items in existing tables
 Medium.destroy_all
+Tag.destroy_all
 
 # Define URL, headers and query for AniList API
 url = 'https://graphql.anilist.co'
@@ -25,7 +26,7 @@ query = "
                 hasNextPage
             }
 
-            media(season: $season, seasonYear: $year){
+            media(season: $season, seasonYear: $year, isAdult: false){
                 id
                 idMal
                 title{
