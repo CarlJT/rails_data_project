@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_192357) do
+ActiveRecord::Schema.define(version: 2018_10_05_203701) do
 
   create_table "episodes", force: :cascade do |t|
     t.string "title"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_192357) do
     t.string "start_date"
     t.string "end_date"
     t.string "season"
-    t.integer "episodes"
+    t.integer "episode_count"
     t.integer "duration"
     t.integer "chapters"
     t.integer "volumes"

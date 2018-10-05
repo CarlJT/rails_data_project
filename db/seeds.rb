@@ -74,8 +74,8 @@ query = "
 "
 
 # Define where from Anilist.co to pull data from
-seasons = ['WINTER', 'SPRING', 'SUMMER', 'FALL']
-years = [2012, 2013, 2014, 2015, 2016, 2017, 2018]
+seasons = ['WINTER', 'SPRING']
+years = [2015]
 
 # Loop through the years and seasons
 years.each do |year|
@@ -121,10 +121,9 @@ years.each do |year|
                     updated_at_anilist: i["updatedAt"],
                     average_score: i["averageScore"],
                     mean_score: i["meanScore"],
-                    is_adult: i["isAdult"]
-                )
+                    is_adult: i["isAdult"])
 
-                # Create record for each available title (if not null)
+                Create record for each available title (if not null)
                 m.media_titles.create(code: "romaji", title: i["title"]["native"])
                 m.media_titles.create(code: "romaji", title: i["title"]["romaji"])
                 m.media_titles.create(code: "english", title: i["title"]["english"])
@@ -133,6 +132,15 @@ years.each do |year|
                 m.media_pictures.create(size: "large", description: "cover_image", link: i["coverImage"]["large"])
                 m.media_pictures.create(size: "medium", description: "cover_image", link: i["coverImage"]["medium"])
                 m.media_pictures.create(description: "banner_image", link: i["bannerImage"])
+
+                # Pull episodes
+                unless i['streamingEpisodes'].length < 1
+                    episodes  = i['streamingEpisodes']
+
+                    episodes.each do |e|
+                        m.episodes.create(title: e['title'], thumbnail: e['thumbnail'], url: e['url'], site: e['site'])
+                    end
+                end
             end
 
             has_next_page = page_data["hasNextPage"]
