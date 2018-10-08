@@ -85,8 +85,8 @@ query = "
 "
 
 # Define where from Anilist.co to pull data from
-seasons = ['WINTER', 'SPRING']
-years = [2015]
+seasons = ['WINTER', 'SPRING', 'SUMMER', 'FALL']
+years = [2015, 2016, 2017, 2018]
 
 # Loop through the years and seasons
 years.each do |year|
