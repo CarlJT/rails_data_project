@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   # Tag-related routes
   get 'tags', to: 'tags#index'
+  get 'tags/:id', to: 'tags#show', as: 'tag'
 end

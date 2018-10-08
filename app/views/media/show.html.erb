@@ -5,7 +5,10 @@
         <td><b>Titles:</b></td>
         <td>
             <ul>
-                <li><b>Native:</b> <%= @titles.where(code:"native").first.title %></li>
+                <% if @titles.where(code:"native").first != nil %>
+                   <li><b>Native:</b> <%= @titles.where(code:"native").first.title %></li>
+                <% end %>
+                
                 <li><b>Romaji:</b> <%= @titles.where(code:"romaji").first.title %></li>
                 
                 <% if @titles.where(code:"english").first != nil %>
