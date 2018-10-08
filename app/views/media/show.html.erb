@@ -116,7 +116,7 @@
             <td>
                 <ul>
                     <% @media_tags.each do |media_tag|%>
-                        <li><%= media_tag.tag.name %></li>
+                        <li><%= link_to media_tag.tag.name, media_tag.tag %></li>
                     <% end%>
                 </ul>
             </td>
