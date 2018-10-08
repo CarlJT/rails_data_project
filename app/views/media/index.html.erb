@@ -10,6 +10,7 @@
     <tbody>
         <% @all_media.each do |medium| %>
             <tr>
+                <td><%= image_tag medium.media_pictures.where(size: "medium").first.link%></td>
                 <td> <%= link_to medium.media_titles.where(code: "romaji").first.title, medium %></td>
                 <td> <%= strip_tags(medium.description) %> </td>
                 <td> <%= medium.format %></td>
