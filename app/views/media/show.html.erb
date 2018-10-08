@@ -1,2 +1,135 @@
-<h1>Media#show</h1>
-<p>Find me in app/views/media/show.html.erb</p>
+<h1> <%= @medium.media_titles.where(code: "romaji").first.title %></h1>
+<%= image_tag @media_pictures.where(size: "large").first.link%>
+<table>
+    <tr>
+        <td><b>Titles:</b></td>
+        <td>
+            <ul>
+                <li><b>Native:</b> <%= @titles.where(code:"native").first.title %></li>
+                <li><b>Romaji:</b> <%= @titles.where(code:"romaji").first.title %></li>
+                
+                <% if @titles.where(code:"english").first != nil %>
+                    <li><b>English:</b> <%= @titles.where(code:"english").first.title %></li>
+                <% end %>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td><b>Other IDs:</b></td>
+        <td>
+            <ul>
+                <li><b>MyAnimeList:</b> <%= @medium.id_mal %></li>
+                <li><b>AniList:</b> <%= @medium.id_anilist %></li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td><b>Type:</b></td>
+        <td><%= @medium.media_type %></td>
+    </tr>
+    <tr>
+        <td><b>Format:</b></td>
+        <td><%= @medium.format %></td>
+    </tr>
+    <tr>
+        <td><b>Status:</b></td>
+        <td><%= @medium.status %></td>
+    </tr>
+    <tr>
+        <td><b>Description:</b></td>
+        <td><%= strip_tags(@medium.description) %></td>
+    </tr>
+    <tr>
+        <td><b>Start Date:</b></td>
+        <td><%= @medium.start_date %></td>
+    </tr>
+    <tr>
+        <td><b>End Date:</b></td>
+        <td><%= @medium.end_date %></td>
+    </tr>
+    <tr>
+        <td><b>Season:</b></td>
+        <td><%= @medium.season %></td>
+    </tr>
+    <tr>
+        <td><b>Episode Count:</b></td>
+        <td><%= @medium.episode_count %></td>
+    </tr>
+    <tr>
+        <td><b>Duration:</b></td>
+        <td><%= @medium.duration %> mins.</td>
+    </tr>
+    <% if @medium.media_type != 'ANIME'%>
+        <tr>
+        <td><b>Chapters:</b></td>
+        <td><%= @medium.chapters %></td>
+        </tr>
+        <tr>
+            <td><b>Volumes:</b></td>
+            <td><%= @medium.volumes %></td>
+        </tr>
+    <% end %>
+
+    <% if @medium.country_of_origin != nil %>
+        <tr>
+            <td><b>Country:</b></td>
+            <td><%= @medium.country_of_origin %></td>
+        </tr>
+    <% end %>
+    
+    <tr>
+        <td><b>Is Licensed:</b></td>
+        <td><%= @medium.is_licensed %></td>
+    </tr>
+    <tr>
+        <td><b>Source:</b></td>
+        <td><%= @medium.source %></td>
+    </tr>
+    <%if @medium.hashtag != nil %>
+        <tr>
+            <td><b>Hashtag:</b></td>
+            <td><%= @medium.hashtag %></td>
+        </tr>
+    <% end %>
+    <% if @medium.average_score != nil %>
+        <tr>
+            <td><b>Average Score:</b></td>
+            <td><%= @medium.average_score %></td>
+        </tr>
+    <% end %>
+    <% if @medium.mean_score != nil %>
+        <tr>
+            <td><b>Mean Score:</b></td>
+            <td><%= @medium.mean_score %></td>
+        </tr>
+    <% end %>
+    <tr>
+        <td><b>Is adult:</b></td>
+        <td><%= @medium.is_adult %></td>
+    </tr>
+    <% if @media_tags.count > 0 %>
+        <tr>
+            <td><b>Tags</b></td>
+            <td>
+                <ul>
+                    <% @media_tags.each do |media_tag|%>
+                        <li><%= media_tag.tag.name %></li>
+                    <% end%>
+                </ul>
+            </td>
+        </tr>
+    <% end %>
+</table>
+
+<% if @episodes.count > 0%>
+    <h2> Episodes:</h2>
+    <table>
+        <% @episodes.each do |episode| %>
+            <tr>
+                <td><%= image_tag(episode.thumbnail, height: 150, width: 200) %></td>
+                <td><%= episode.title %></td>
+                <td>Watch on <%= link_to episode.site, "#{episode.url}"%></td>
+            </tr>
+        <% end %>
+    </table>
+<% end %>

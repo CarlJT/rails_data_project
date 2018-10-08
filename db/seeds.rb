@@ -134,7 +134,7 @@ years.each do |year|
                     mean_score: i["meanScore"],
                     is_adult: i["isAdult"])
 
-                m.media_titles.create(code: "romaji", title: i["title"]["native"])
+                m.media_titles.create(code: "native", title: i["title"]["native"])
                 m.media_titles.create(code: "romaji", title: i["title"]["romaji"])
                 m.media_titles.create(code: "english", title: i["title"]["english"])
 

@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   # Show media#index when going to url localhost:3000/media
   get 'media', to: 'media#index'
+  get 'media/:id', to: 'media#show', as: 'medium'
 end

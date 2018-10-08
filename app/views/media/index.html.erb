@@ -1,2 +1,19 @@
-<h1>Media#index</h1>
-<p>Find me in app/views/media/index.html.erb</p>
+<h1>Currently Airing</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Format</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @all_media.each do |medium| %>
+            <tr>
+                <td> <%= link_to medium.media_titles.where(code: "romaji").first.title, medium %></td>
+                <td> <%= strip_tags(medium.description) %> </td>
+                <td> <%= medium.format %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
