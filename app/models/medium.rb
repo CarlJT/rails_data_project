@@ -7,4 +7,6 @@ class Medium < ApplicationRecord
     validates :id_anilist, numericality: {only_integer: true}
     validates :is_licensed, inclusion: {in: [true, false]}
     validates :is_adult, inclusion: {in: [true, false]}
+    
+    paginates_per 10
 end

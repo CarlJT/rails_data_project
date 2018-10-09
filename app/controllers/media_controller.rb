@@ -1,6 +1,6 @@
 class MediaController < ApplicationController
   def index
-    @all_media = Medium.all
+    @all_media = Medium.all.order(end_date: :desc).page params[:page]
   end
 
   def show

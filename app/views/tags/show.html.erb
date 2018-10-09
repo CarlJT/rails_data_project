@@ -8,6 +8,7 @@
         </tr>
     </thead>
     <tbody>
+        <%= paginate @media_in_tag%>
         <% @media_in_tag.each do |medium_in_tag| %>
             <tr>
                 <td><%= image_tag("#{medium_in_tag.medium.media_pictures.where(size: "medium").first.link}", alt: "Media Cover Image") %></td>

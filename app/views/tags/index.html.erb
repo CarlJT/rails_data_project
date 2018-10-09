@@ -1,5 +1,6 @@
 <h1>Tags</h1>
 
+<%= paginate @tags%>
 <ul>
     <% @tags.each do |tag| %>
         <li><%= link_to tag.name, tag %></li>
