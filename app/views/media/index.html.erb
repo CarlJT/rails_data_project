@@ -1,4 +1,5 @@
 <h1>Media</h1>
+<%= paginate @all_media%>
 <table>
     <thead>
         <tr>
@@ -9,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        <%= paginate @all_media%>
+        
         <% @all_media.each do |medium| %>
             <tr>
                 <td><%= image_tag("#{medium.media_pictures.where(size: "medium").first.link}", alt: "Media Cover Image")%></td>

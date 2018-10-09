@@ -1,14 +1,15 @@
 <h1>Animes found in "<%= @tag.name %>" tag</h1>
+<%= paginate @media_in_tag%>
 <table>
     <thead>
         <tr>
+            <th></th>
             <th>Title</th>
             <th>Description</th>
             <th>Format</th>
         </tr>
     </thead>
     <tbody>
-        <%= paginate @media_in_tag%>
         <% @media_in_tag.each do |medium_in_tag| %>
             <tr>
                 <td><%= image_tag("#{medium_in_tag.medium.media_pictures.where(size: "medium").first.link}", alt: "Media Cover Image") %></td>
