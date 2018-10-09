@@ -1,0 +1,19 @@
+<h1>About this Rails App</h1>
+
+<p>The data stored within this application was pulled from Anilist's API. The data includes animes released
+from 2015 to 2018. The information showed is not complete and only includes information related to the media.</p>
+<br/>
+<h2>Tables</h2>
+<%= image_tag("IntroToRailsProjectERD.jpg", alt: "App ERD")%>
+<ul>
+    <li><p><b>Medium (Media)</b> - the main building block of the application. In this model contains almost all
+    of the information related to an anime.</p></li>
+    <li><p><b>MediaTitle</b> - contains titles associated to an anime. They are usually in three formats: native,
+    romaji and English. Has a many-to-one relationship to Medium (Media)</p></li>
+    <li><p><b>MediaPicture</b> - holds cover and/or banner images for the anime. Has a many-to-one
+    relationship to Medium (Media)</p></li>
+    <li><p><b>Episode</b> - contains list of episodes available for the anime, as well as link to an official
+    streaming source. Has a many-to-one relationship to Medium (Media)</p></li>
+    <li><p><b>Tag</b> - category for an anime. Has a many-to-many relationship to Medium (Media) through MediaTag model.</p></li>
+</ul>
+<br/>
