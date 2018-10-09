@@ -10,7 +10,7 @@
     <tbody>
         <% @media_in_tag.each do |medium_in_tag| %>
             <tr>
-                <td><%= image_tag medium_in_tag.medium.media_pictures.where(size: "medium").first.link %></td>
+                <td><%= image_tag("#{medium_in_tag.medium.media_pictures.where(size: "medium").first.link}", alt: "Media Cover Image") %></td>
                 <td> <%= link_to medium_in_tag.medium.media_titles.where(code: "romaji").first.title, medium_in_tag.medium %></td>
                 <td> <%= strip_tags(medium_in_tag.medium.description) %> </td>
                 <td> <%= medium_in_tag.medium.format %></td>

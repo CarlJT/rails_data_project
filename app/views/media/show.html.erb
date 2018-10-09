@@ -1,5 +1,5 @@
 <h1> <%= @medium.media_titles.where(code: "romaji").first.title %></h1>
-<%= image_tag @media_pictures.where(size: "large").first.link%>
+<%= image_tag("#{@media_pictures.where(size: "large").first.link}", alt: "Media Cover Image")%>
 <table>
     <tr>
         <td><b>Titles:</b></td>
@@ -129,7 +129,7 @@
     <table>
         <% @episodes.each do |episode| %>
             <tr>
-                <td><%= image_tag(episode.thumbnail, height: 150, width: 200) %></td>
+                <td><%= image_tag(episode.thumbnail, alt: "Episode Thumbnail", height: 150, width: 200) %></td>
                 <td><%= episode.title %></td>
                 <td>Watch on <%= link_to episode.site, "#{episode.url}"%></td>
             </tr>
